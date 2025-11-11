@@ -1,0 +1,131 @@
+/* ===== General Reset ===== */
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #070b14; /* Gelap elegan biru kehitaman */
+    color: #e6e9ef;
+}
+
+/* ===== Profile Container ===== */
+.profile-container {
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 40px;
+    background: linear-gradient(145deg, #0a0f1c, #10182c); /* Gradasi biru gelap */
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.8);
+}
+
+/* ===== Header ===== */
+header h1 {
+    font-size: 3rem;
+    color: #00bcd4; /* Cyan lembut */
+    margin-bottom: 5px;
+    letter-spacing: 1px;
+}
+.subtitle {
+    font-size: 1.2rem;
+    color: #a6b1e1;
+    opacity: 0.9;
+    letter-spacing: 0.5px;
+}
+
+/* ===== Sections ===== */
+section h2 {
+    color: #8a2be2; /* Ungu neon */
+    margin-bottom: 15px;
+    border-bottom: 2px solid #8a2be2;
+    display: inline-block;
+    padding-bottom: 3px;
+}
+
+.introduction p {
+    line-height: 1.7;
+    margin-bottom: 22px;
+    color: #d8dcf1;
+}
+
+/* ===== Button Group ===== */
+.button-group {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+/* ===== Elegant Buttons ===== */
+.button-group a {
+    text-decoration: none;
+    padding: 14px 32px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 1rem;
+    text-align: center;
+    display: inline-block;
+    color: #fff;
+    border: 2px solid #00bcd4;
+    background: linear-gradient(145deg, #0c162a, #091122);
+    box-shadow: 0 4px 12px rgba(0,188,212,0.3);
+    position: relative;
+    transition: all 0.4s ease;
+    overflow: hidden;
+}
+
+/* ===== Glow & Hover Effect ===== */
+.button-group a::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(0,188,212,0.4) 0%, rgba(0,188,212,0) 80%);
+    transform: scale(0);
+    transition: all 0.5s ease;
+    z-index: 0;
+    border-radius: 12px;
+}
+
+.button-group a:hover::before {
+    transform: scale(1);
+}
+
+.button-group a:hover {
+    color: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 0 25px #00bcd4, 0 0 50px #00bcd4, 0 0 75px #00bcd4;
+    background: linear-gradient(145deg, #112b3c, #0b1e30);
+}
+
+/* Text always on top */
+.button-group a span {
+    position: relative;
+    z-index: 2;
+}
+
+/* ===== Variations ===== */
+.link-btn-2 {
+    border-color: #8a2be2;
+}
+.link-btn-2:hover {
+    box-shadow: 0 0 20px #8a2be2, 0 0 40px #8a2be2;
+}
+
+.link-btn-3 {
+    border-color: #ff00ff; /* Fuchsia neon */
+}
+.link-btn-3:hover {
+    box-shadow: 0 0 20px #ff00ff, 0 0 40px #ff00ff;
+}
+
+/* ===== Note Style ===== */
+.note {
+    margin-top: 25px;
+    font-style: italic;
+    color: #a1accb;
+}
+
+.note a {
+    color: #00bcd4;
+    text-decoration: none;
+}
