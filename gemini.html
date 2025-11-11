@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalstore - Neon Tech Top Up | Instan & Aman</title>
+    <link href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Styling untuk Kalstore (Tema Neon Tech) */
+        
+        :root {
+            --dark-bg: #1A1A1A;
+            --primary-neon: #00FFFF; /* Cyan Electric */
+            --secondary-neon: #FF00FF; /* Magenta/Fuchsia Neon */
+            --text-color: #E0E0E0;
+            --card-bg: #2C2C2C;
+            --border-color: #3A3A3A;
+        }
+
+        body {
+            font-family: 'Orbitron', sans-serif;
+            background-color: var(--dark-bg); 
+            margin: 0;
+            padding: 0;
+            color: var(--text-color);
+        }
+
+        /* --- Global Container --- */
+        .main-content {
+            padding: 0 5%;
+        }
+
+        /* --- 1. Header/Navbar --- */
+
+        .navbar {
+            background-color: var(--dark-bg);
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .logo-text {
+            font-family: 'Major Mono Display', monospace;
+            font-size: 30px;
+            font-weight: 700;
+            color: var(--primary-neon);
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.7);
+        }
+
+        .nav-menu a {
+            color: var(--text-color);
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 14px;
+            transition: color 0.3s, text-shadow 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: var(--secondary-neon);
+            text-shadow: 0 0 8px rgba(255, 0, 255, 0.8);
+        }
+
+        .btn-login {
+            background-color: var(--secondary-neon);
+            color: var(--dark-bg);
+            padding: 8px 15px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+
+        .btn-login:hover {
+            background-color: #FF66FF;
+            box-shadow: 0 0 15px var(--secondary-neon);
+        }
+
+        /* --- 2. Hero Section (Search Bar) --- */
+        
+        .hero-section {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.8)), url('https://via.placeholder.com/1200x300?text=NEON+GAMING+BACKGROUND') no-repeat center center/cover;
+            padding: 80px 0;
+            text-align: center;
+            margin-top: 1px;
+            box-shadow: inset 0 -10px 20px rgba(0,0,0,0.5);
+        }
+
+        .hero-title {
+            font-size: 42px;
+            font-weight: 900;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            color: white;
+            text-shadow: 0 0 15px var(--primary-neon);
+        }
+
+        .hero-subtitle {
+            font-family: Consolas, monospace;
+            font-size: 18px;
+            color: var(--primary-neon);
+            margin-bottom: 30px;
+        }
+
+        .search-bar {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .search-bar input {
+            padding: 12px 20px;
+            width: 60%;
+            max-width: 400px;
+            border: 2px solid var(--primary-neon);
+            background-color: rgba(0, 255, 255, 0.1);
+            color: var(--text-color);
+            border-radius: 4px 0 0 4px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .btn-search {
+            background-color: var(--primary-neon);
+            color: var(--dark-bg);
+            border: 2px solid var(--primary-neon);
+            padding: 12px 20px;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 700;
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+
+        .btn-search:hover {
+            background-color: var(--secondary-neon);
+            border-color: var(--secondary-neon);
+            box-shadow: 0 0 10px var(--secondary-neon);
+        }
+
+        /* --- 3. Daftar Game (Grid) --- */
+
+        .game-list {
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--secondary-neon);
+            margin-bottom: 30px;
+            text-shadow: 0 0 5px var(--secondary-neon);
+        }
+
+        .game-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        /* Styling Kartu Game (Neon Style) */
+        .game-item {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            text-decoration: none;
+            color: var(--text-color);
+            transition: box-shadow 0.3s, transform 0.2s, border-color 0.3s;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .game-item:hover {
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
+            transform: scale(1.03);
+            border-color: var(--primary-neon);
+        }
+
+        .game-thumb {
+            width: 100%;
+            height: 120px;
+            background-color: #000;
+            overflow: hidden;
+        }
+
+        .game-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .game-info {
+            padding: 15px;
+        }
+
+        .game-name {
+            font-weight: 700;
+            font-size: 16px;
+            color: var(--text-color);
+        }
+
+        /* Tombol Beli yang Muncul saat Hover */
+        .game-buy-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85); 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .game-item:hover .game-buy-overlay {
+            opacity: 1;
+        }
+        
+        .btn-buy {
+            background-color: var(--primary-neon);
+            color: var(--dark-bg);
+            padding: 12px 20px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-transform: uppercase;
+            text-shadow: 0 0 5px #000;
+            box-shadow: 0 0 10px var(--primary-neon);
+            transition: background-color 0.2s, box-shadow 0.3s;
+        }
+
+        .btn-buy:hover {
+            background-color: var(--secondary-neon);
+            box-shadow: 0 0 15px var(--secondary-neon);
+        }
+
+        .btn-all-games {
+            background-color: var(--card-bg);
+            color: var(--primary-neon);
+            border: 2px solid var(--primary-neon);
+            padding: 10px 25px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: background-color 0.3s, box-shadow 0.3s;
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        .btn-all-games:hover {
+            background-color: var(--primary-neon);
+            color: var(--dark-bg);
+            box-shadow: 0 0 10px var(--primary-neon);
+        }
+
+        /* --- 4. Feature Bar (Diperbarui Neon) --- */
+        .feature-bar {
+            background-color: var(--card-bg);
+            padding: 30px 5%;
+            margin-top: 30px;
+            display: flex;
+            justify-content: space-around;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border: 1px solid var(--border-color);
+        }
+
+        .feature-item {
+            flex-basis: 30%;
+            text-align: center;
+        }
+
+        .feature-item h3 {
+            color: var(--secondary-neon);
+            font-size: 20px;
+            margin-bottom: 5px;
+            text-shadow: 0 0 5px var(--secondary-neon);
+        }
+
+        .feature-item p {
+            font-family: Consolas, monospace;
+            font-size: 14px;
+            color: var(--text-color);
+        }
+
+        /* --- Responsif Dasar --- */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+            }
+            .nav-menu {
+                margin: 10px 0;
+            }
+            .hero-title {
+                font-size: 32px;
+            }
+            /* ... (Styling responsif mobile untuk search bar dan features sama seperti sebelumnya) */
+             .game-buy-overlay {
+                /* Sembunyikan overlay hover pada mobile */
+                display: none;
+            }
+            .game-item {
+                padding-bottom: 50px;
+            }
+            .btn-buy-mobile {
+                display: block !important; /* Paksa tampil di mobile */
+                background-color: var(--secondary-neon);
+                color: var(--dark-bg);
+                padding: 8px 10px;
+                font-weight: 700;
+                text-decoration: none;
+                position: absolute;
+                bottom: 10px;
+                left: 15px;
+                right: 15px;
+                border-radius: 4px;
+                box-shadow: 0 0 10px var(--secondary-neon);
+            }
+            /* Pastikan tombol mobile di desktop tetap tersembunyi */
+            @media (min-width: 769px) {
+                .btn-buy-mobile {
+                    display: none !important;
+                }
+            }
+        }
+        
+    </style>
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo-text">K A L S T O R E</div>
+        <nav class="nav-menu">
+            <a href="#home">HOME</a>
+            <a href="#voucher">VOUCHER</a>
+            <a href="#promo">PROMO</a>
+            <a href="#bantuan">BANTUAN</a>
+        </nav>
+        <div class="auth-buttons">
+            <a href="#login" class="btn-login">LOGIN / DAFTAR</a>
+        </div>
+    </header>
+
+    <div class="main-content">
+        <div class="hero-section">
+            <h1 class="hero-title">TOP UP INSTAN // POWER UP NOW</h1>
+            <p class="hero-subtitle">[STATUS: TRANSMISSION ONLINE // ACCESS GRANTED]</p>
+            
+            <div class="search-bar">
+                <input type="text" placeholder="CARI DATA GAME (Contoh: Mobile Legends ID: 12345)">
+                <button class="btn-search">SEARCH</button>
+            </div>
+        </div>
+
+        <section class="game-list">
+            <h2 class="section-title">// HOT GAMES FEED //</h2>
+            <div class="game-grid">
+                
+                <a href="#topup-mlbb" class="game-item">
+                    <div class="game-thumb">
+                        <img src="https://via.placeholder.com/200x120?text=MLBB+CYBER" alt="Mobile Legends">
+                    </div>
+                    <div class="game-info">
+                        <div class="game-name">MOBILE LEGENDS: BB</div>
+                    </div>
+                    <div class="game-buy-overlay">
+                        <span class="btn-buy">ACCESS DENIED - ACTIVATE</span>
+                    </div>
+                    <span class="btn-buy-mobile">ACTIVATE</span>
+                </a>
+
+                <a href="#topup-ff" class="game-item">
+                    <div class="game-thumb">
+                        <img src="https://via.placeholder.com/200x120?text=FF+CYBER" alt="Free Fire">
+                    </div>
+                    <div class="game-info">
+                        <div class="game-name">FREE FIRE</div>
+                    </div>
+                    <div class="game-buy-overlay">
+                        <span class="btn-buy">ACCESS DENIED - ACTIVATE</span>
+                    </div>
+                    <span class="btn-buy-mobile">ACTIVATE</span>
+                </a>
+
+                <a href="#topup-valorant" class="game-item">
+                    <div class="game-thumb">
+                        <img src="https://via.placeholder.com/200x120?text=VALO+CYBER" alt="Valorant">
+                    </div>
+                    <div class="game-info">
+                        <div class="game-name">VALORANT VP</div>
+                    </div>
+                    <div class="game-buy-overlay">
+                        <span class="btn-buy">ACCESS DENIED - ACTIVATE</span>
+                    </div>
+                    <span class="btn-buy-mobile">ACTIVATE</span>
+                </a>
+
+                <a href="#topup-genshin" class="game-item">
+                    <div class="game-thumb">
+                        <img src="https://via.placeholder.com/200x120?text=GENSHIN+CYBER" alt="Genshin Impact">
+                    </div>
+                    <div class="game-info">
+                        <div class="game-name">GENSHIN IMPACT</div>
+                    </div>
+                    <div class="game-buy-overlay">
+                        <span class="btn-buy">ACCESS DENIED - ACTIVATE</span>
+                    </div>
+                    <span class="btn-buy-mobile">ACTIVATE</span>
+                </a>
+                
+            </div>
+            <a href="#semua-game" class="btn-all-games">VIEW ALL DATA (30+)</a>
+        </section>
+        
+        <section class="feature-bar">
+            <div class="feature-item">
+                <h3>// LOW PING</h3>
+                <p>FASTEST TRANSACTION TIME</p>
+            </div>
+            <div class="feature-item">
+                <h3>// ENCRYPTED</h3>
+                <p>100% SECURE DATA TRANSFER</p>
+            </div>
+            <div class="feature-item">
+                <h3>// 24.7 ONLINE</h3>
+                <p>AUTO PROCESS. NO DOWNTIME</p>
+            </div>
+        </section>
+    </div>
+
+</body>
+</html>

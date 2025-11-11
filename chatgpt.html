@@ -1,0 +1,574 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>KalStore — Top Up Game Cepat & Aman</title>
+  <meta name="description" content="KalStore — Top up game favoritmu dengan cepat, aman, dan resmi. Mobile Legends, Free Fire, PUBG, Genshin Impact & banyak lagi." />
+  <style>
+    :root{
+      --bg:#0f0f17;
+      --card:#111118;
+      --muted:#9aa1b2;
+      --accent-1:#00c4ff; /* biru neon */
+      --accent-2:#4a00e0; /* ungu gelap */
+      --accent-grad: linear-gradient(135deg,var(--accent-1),var(--accent-2));
+      --glass: rgba(255,255,255,0.04);
+      --glass-2: rgba(255,255,255,0.02);
+      --radius: 12px;
+      --max-w:1100px;
+      --fw-sans: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:var(--fw-sans);
+      background: radial-gradient(1200px 600px at 10% 10%, rgba(74,0,224,0.12), transparent),
+                  radial-gradient(1000px 500px at 90% 90%, rgba(0,196,255,0.08), transparent),
+                  var(--bg);
+      color:#fff;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+      padding:32px 20px;
+      display:flex;
+      justify-content:center;
+    }
+
+    .container{
+      width:100%;
+      max-width:var(--max-w);
+    }
+
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      margin-bottom:20px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      text-decoration:none;
+      color:inherit;
+    }
+    .brand-logo{
+      width:46px;height:46px;
+      border-radius:10px;
+      background:var(--accent-grad);
+      display:flex;align-items:center;justify-content:center;
+      box-shadow: 0 6px 18px rgba(74,0,224,0.18);
+      font-weight:700;font-size:18px;
+    }
+    nav{display:flex;gap:12px;align-items:center}
+    nav a{
+      color:var(--muted);
+      text-decoration:none;
+      padding:8px 10px;border-radius:8px;font-size:14px;
+    }
+    nav a:hover{color:#fff;background:rgba(255,255,255,0.03)}
+    .cta{
+      background:var(--accent-grad);
+      color:#fff;padding:10px 14px;border-radius:12px;text-decoration:none;font-weight:700;
+      box-shadow: 0 8px 22px rgba(0,196,255,0.08);
+    }
+
+    /* Hero */
+    .hero{
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+      border-radius:var(--radius);
+      padding:28px;
+      display:grid;
+      grid-template-columns: 1fr 420px;
+      gap:22px;
+      align-items:center;
+      margin-bottom:26px;
+      backdrop-filter: blur(6px);
+      border:1px solid var(--glass);
+    }
+    .hero h1{
+      font-size:32px;margin:0 0 12px 0;letter-spacing:-0.02em;
+    }
+    .hero p{margin:0 0 18px 0;color:var(--muted);font-size:15px}
+    .hero .hero-ctas{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{
+      padding:12px 16px;border-radius:12px;border:0;cursor:pointer;font-weight:700;
+    }
+    .btn-primary{background:var(--accent-grad);color:#fff;box-shadow:0 10px 30px rgba(0,0,0,0.35)}
+    .btn-ghost{background:transparent;border:1px solid var(--glass);color:#fff}
+    .mockup{
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:10px;padding:12px;border:1px solid var(--glass);
+      display:flex;flex-direction:column;gap:10px;
+    }
+    .mockup .screen{
+      height:340px;border-radius:8px;background:
+      linear-gradient(180deg, rgba(255,255,255,0.01), transparent);
+      border:1px solid rgba(255,255,255,0.02);
+      display:flex;flex-direction:column;overflow:auto;padding:12px;
+      gap:10px;
+    }
+    .search{
+      display:flex;gap:8px;padding:8px;background:var(--glass-2);border-radius:10px;
+      align-items:center;
+    }
+    .search input{flex:1;background:transparent;border:0;outline:none;color:#fff;padding:6px}
+
+    /* Game grid */
+    .section{margin-bottom:26px}
+    .section h2{margin:0 0 14px 0}
+    .games{
+      display:grid;grid-template-columns:repeat(4,1fr);gap:12px;
+    }
+    .game{
+      background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);
+      border-radius:12px;padding:12px;border:1px solid var(--glass);display:flex;flex-direction:column;gap:10px;
+      transition:transform .18s ease, box-shadow .18s ease;
+    }
+    .game:hover{transform:translateY(-6px);box-shadow:0 20px 40px rgba(0,0,0,0.5)}
+    .game .game-top{display:flex;align-items:center;gap:12px}
+    .game-logo{width:56px;height:56px;border-radius:10px;background:#111;display:flex;align-items:center;justify-content:center;font-weight:700}
+    .game h3{margin:0;font-size:16px}
+    .game p{margin:0;color:var(--muted);font-size:13px}
+    .game .game-actions{margin-top:auto;display:flex;gap:8px}
+    .small{font-size:13px;padding:8px 10px;border-radius:10px;background:rgba(255,255,255,0.03);border:0;color:#fff}
+
+    /* How to top up */
+    .steps{display:flex;gap:12px}
+    .step{flex:1;background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);padding:12px;border-radius:12px;border:1px solid var(--glass);text-align:center}
+    .step .num{width:46px;height:46px;border-radius:50%;display:inline-grid;place-items:center;background:var(--glass);margin-bottom:8px}
+
+    /* Promo carousel */
+    .carousel{position:relative;overflow:hidden;border-radius:12px;border:1px solid var(--glass);padding:8px;background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent)}
+    .slides{display:flex;gap:12px;transition:transform .45s cubic-bezier(.2,.9,.3,1)}
+    .promo{min-width:260px;padding:16px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);border:1px solid rgba(255,255,255,0.02)}
+    .carousel-controls{display:flex;gap:8px;justify-content:flex-end;margin-top:8px}
+
+    /* Testimonials */
+    .testi{display:flex;gap:12px}
+    .card{background:var(--card);padding:14px;border-radius:12px;border:1px solid var(--glass);}
+
+    /* Footer */
+    footer{margin-top:18px;padding:18px;border-radius:12px;background:transparent;border:1px solid var(--glass)}
+    .footer-grid{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+    /* Modal */
+    .modal-backdrop{
+      position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,0.6);z-index:60;
+    }
+    .modal{
+      width:100%;max-width:720px;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+      padding:18px;border-radius:12px;border:1px solid var(--glass);box-shadow:0 30px 80px rgba(0,0,0,0.6);
+    }
+    .form-row{display:flex;gap:8px;flex-wrap:wrap}
+    .input,select{background:transparent;border:1px solid var(--glass);padding:10px;border-radius:10px;color:#fff;min-width:0}
+    .input{flex:1}
+    .nominals{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+    .nominal{padding:8px 10px;border-radius:10px;border:1px solid var(--glass);cursor:pointer}
+    .nominal.active{background:var(--accent-grad);color:#000;font-weight:700}
+    .payments{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+    .pay{padding:8px 10px;border-radius:8px;border:1px solid var(--glass);display:flex;gap:8px;align-items:center}
+
+    /* small screens */
+    @media (max-width:980px){
+      .hero{grid-template-columns: 1fr}
+      .games{grid-template-columns:repeat(2,1fr)}
+      .slides{transform:none}
+      .steps{flex-direction:column}
+    }
+    @media (max-width:520px){
+      .games{grid-template-columns:repeat(1,1fr)}
+      header{flex-direction:column;align-items:flex-start;gap:12px}
+      .mockup .screen{height:220px}
+    }
+
+    /* tiny helper */
+    .muted{color:var(--muted);font-size:13px}
+    .success{background:linear-gradient(90deg,#16a34a,#22c55e);padding:10px;border-radius:10px;color:#042a10}
+  </style>
+</head>
+<body>
+  <div class="container" role="main">
+    <header>
+      <a class="brand" href="#" aria-label="KalStore home">
+        <div class="brand-logo">K</div>
+        <div>
+          <div style="font-weight:800">KalStore</div>
+          <div class="muted" style="font-size:12px;margin-top:2px">Top-up Game Cepat & Aman</div>
+        </div>
+      </a>
+
+      <nav aria-label="Main navigation">
+        <a href="#games">Game</a>
+        <a href="#cara">Cara Top Up</a>
+        <a href="#promo">Promo</a>
+        <a href="#bantuan">Bantuan</a>
+        <a class="cta" href="#" id="openTopUp">Top Up Sekarang</a>
+      </nav>
+    </header>
+
+    <section class="hero" aria-labelledby="hero-title">
+      <div>
+        <h1 id="hero-title">Top-Up Game Favoritmu dalam Hitungan Detik!</h1>
+        <p>KalStore — Top up Mobile Legends, Free Fire, PUBG, Genshin Impact, Valorant, dan banyak lagi. Cepat, aman, dan resmi. Tidak perlu login—cukup masukkan ID game.</p>
+
+        <div class="hero-ctas">
+          <button class="btn btn-primary" id="openTopUp2">Mulai Top Up Sekarang</button>
+          <a class="btn btn-ghost" href="#games">Lihat Daftar Game</a>
+        </div>
+
+        <div style="margin-top:18px;display:flex;gap:12px;align-items:center">
+          <div class="card" style="padding:10px;border-radius:10px;border:1px solid var(--glass);display:flex;gap:10px;align-items:center">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden focusable="false"><path d="M12 2v10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 12c1-2 3-4 6-4s5 2 6 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div>
+              <div style="font-weight:700">Transaksi Instan</div>
+              <div class="muted">Diamond langsung masuk</div>
+            </div>
+          </div>
+          <div class="card" style="padding:10px;border-radius:10px;border:1px solid var(--glass);display:flex;gap:10px;align-items:center">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 2l2 4h4l-3 3 1 4-4-2-4 2 1-4L6 6h4l2-4z" stroke="currentColor" stroke-width="1.2"></path></svg>
+            <div>
+              <div style="font-weight:700">Promo & Cashback</div>
+              <div class="muted">Diskon untuk pengguna baru</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="mockup" aria-hidden="true">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div class="muted" style="font-size:13px">Preview Top-up</div>
+          <div style="font-size:12px" class="muted">KalStore • Demo</div>
+        </div>
+        <div class="screen">
+          <div class="search" role="search" aria-label="Cari game">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M21 21l-4.35-4.35" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <input placeholder="Cari game (mis. Mobile Legends)" />
+            <button class="small">Cari</button>
+          </div>
+
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px">
+            <div style="flex:1;min-width:140px" class="card">
+              <div style="font-weight:700">Game</div>
+              <div class="muted" style="font-size:13px">Mobile Legends</div>
+            </div>
+            <div style="flex:1;min-width:140px" class="card">
+              <div style="font-weight:700">Nominal</div>
+              <div class="muted" style="font-size:13px">86 Diamonds</div>
+            </div>
+          </div>
+
+          <div style="margin-top:auto" class="muted">*Contoh tampilan editor top-up KalStore</div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- Games -->
+    <section id="games" class="section" aria-labelledby="games-title">
+      <h2 id="games-title">Pilih Game Favoritmu</h2>
+      <div class="games" id="gameGrid">
+        <!-- Game items (JS will populate) -->
+      </div>
+    </section>
+
+    <!-- Cara Top Up -->
+    <section id="cara" class="section" aria-labelledby="cara-title">
+      <h2 id="cara-title">Cara Top Up di KalStore</h2>
+      <div class="steps" role="list">
+        <div class="step" role="listitem">
+          <div class="num">1</div>
+          <div style="font-weight:700">Pilih Game</div>
+          <div class="muted">Klik kartu game yang ingin kamu isi</div>
+        </div>
+        <div class="step" role="listitem">
+          <div class="num">2</div>
+          <div style="font-weight:700">Masukkan ID</div>
+          <div class="muted">Masukkan ID atau UID gamemu</div>
+        </div>
+        <div class="step" role="listitem">
+          <div class="num">3</div>
+          <div style="font-weight:700">Pilih Nominal</div>
+          <div class="muted">Pilih paket diamond/credit</div>
+        </div>
+        <div class="step" role="listitem">
+          <div class="num">4</div>
+          <div style="font-weight:700">Bayar & Selesai</div>
+          <div class="muted">Transaksi cepat, diamond masuk otomatis</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Promo -->
+    <section id="promo" class="section" aria-labelledby="promo-title">
+      <h2 id="promo-title">Promo Minggu Ini 🔥</h2>
+      <div class="carousel">
+        <div class="slides" id="slides">
+          <div class="promo">
+            <div style="font-weight:800">Top Up MLBB Bonus 10%</div>
+            <div class="muted" style="margin-top:8px">Tambahan bonus untuk pembelian tertentu.</div>
+          </div>
+          <div class="promo">
+            <div style="font-weight:800">Diskon 15% Pengguna Baru</div>
+            <div class="muted" style="margin-top:8px">Gunakan kode: KALNEW15</div>
+          </div>
+          <div class="promo">
+            <div style="font-weight:800">Cashback DANA hingga Rp20.000</div>
+            <div class="muted" style="margin-top:8px">Metode pembayaran DANA eligible</div>
+          </div>
+        </div>
+        <div class="carousel-controls">
+          <button class="small" id="prevSlide">&larr;</button>
+          <button class="small" id="nextSlide">&rarr;</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section" aria-labelledby="testi-title">
+      <h2 id="testi-title">Apa Kata Mereka?</h2>
+      <div class="testi">
+        <div class="card" style="flex:1">
+          <div style="font-weight:700">“Diamond langsung masuk, recommended!”</div>
+          <div class="muted" style="margin-top:6px">— Haikal R., Gamer MLBB</div>
+        </div>
+        <div class="card" style="flex:1">
+          <div style="font-weight:700">“Banyak promo dan metode bayar lengkap.”</div>
+          <div class="muted" style="margin-top:6px">— Dita, Streamer</div>
+        </div>
+        <div class="card" style="flex:1">
+          <div style="font-weight:700">“Support cepat dan aman.”</div>
+          <div class="muted" style="margin-top:6px">— Rian, Turnamen Organizer</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer aria-label="Footer">
+      <div class="footer-grid">
+        <div style="min-width:220px">
+          <div style="font-weight:800">KalStore</div>
+          <div class="muted" style="margin-top:8px">Top-up game cepat & aman • Support 24/7</div>
+        </div>
+        <div style="display:flex;gap:24px;flex-wrap:wrap">
+          <div>
+            <div style="font-weight:700;margin-bottom:8px">Company</div>
+            <div class="muted" style="font-size:13px">Tentang Kami<br/>Karier<br/>Blog</div>
+          </div>
+          <div>
+            <div style="font-weight:700;margin-bottom:8px">Support</div>
+            <div class="muted" style="font-size:13px">FAQ<br/>Syarat & Ketentuan<br/>Kontak</div>
+          </div>
+        </div>
+        <div style="min-width:160px;text-align:right">
+          <div style="font-weight:700">Ikuti Kami</div>
+          <div class="muted" style="margin-top:8px">Instagram • TikTok • YouTube</div>
+        </div>
+      </div>
+      <div style="margin-top:12px;text-align:center" class="muted">© <span id="year"></span> KalStore. All rights reserved.</div>
+    </footer>
+  </div>
+
+  <!-- Modal Top-Up -->
+  <div class="modal-backdrop" id="modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal" role="document" aria-labelledby="modalTitle">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+        <div>
+          <div id="modalTitle" style="font-weight:800">Top Up — <span id="modalGame">Pilih Game</span></div>
+          <div class="muted" style="font-size:13px">Masukkan ID pengguna dan pilih nominal</div>
+        </div>
+        <button id="closeModal" class="small" aria-label="Tutup modal">Tutup</button>
+      </div>
+
+      <form id="topupForm" onsubmit="return false;">
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <input class="input" id="gameInput" type="text" readonly aria-label="Game"/>
+          <input class="input" id="userId" type="text" placeholder="Masukkan ID/UID (contoh: 123456789)" required/>
+        </div>
+
+        <div style="margin-top:8px">
+          <div class="muted">Pilih Nominal</div>
+          <div class="nominals" id="nominals">
+            <div class="nominal" data-value="20000">86 Diamonds — Rp20.000</div>
+            <div class="nominal" data-value="40000">172 Diamonds — Rp40.000</div>
+            <div class="nominal" data-value="75000">415 Diamonds — Rp75.000</div>
+            <div class="nominal" data-value="150000">840 Diamonds — Rp150.000</div>
+          </div>
+        </div>
+
+        <div style="margin-top:10px">
+          <div class="muted">Pilih Metode Pembayaran</div>
+          <div class="payments" id="payments">
+            <label class="pay"><input type="radio" name="method" value="gopay" checked/> GoPay</label>
+            <label class="pay"><input type="radio" name="method" value="dana" /> DANA</label>
+            <label class="pay"><input type="radio" name="method" value="ovo" /> OVO</label>
+            <label class="pay"><input type="radio" name="method" value="bank" /> Transfer Bank</label>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:8px;margin-top:12px;align-items:center">
+          <button class="btn btn-primary" id="confirmBtn">Bayar Sekarang</button>
+          <div id="formNotice" class="muted" style="font-size:13px">Estimasi: proses instan.</div>
+        </div>
+
+        <div id="successMsg" style="display:none;margin-top:12px" role="status"></div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Basic data
+    const games = [
+      { id: 'mlbb', name:'Mobile Legends', desc:'86 Diamonds, 172 Diamonds, 415 Diamonds', color:'#FF6B6B' },
+      { id: 'ff', name:'Free Fire', desc:'100 Diamonds, 300 Diamonds, 500 Diamonds', color:'#FFD166' },
+      { id: 'pubg', name:'PUBG Mobile', desc:'UC Paket 60, 300', color:'#06D6A0' },
+      { id: 'genshin', name:'Genshin Impact', desc:'Genesis Crystals', color:'#8E2DE2' },
+      { id: 'valorant', name:'Valorant', desc:'VP Points', color:'#00B4D8' },
+      { id: 'higgs', name:'Higgs Domino', desc:'Koin Top Up', color:'#ffb703' }
+    ];
+
+    const gameGrid = document.getElementById('gameGrid');
+    const modal = document.getElementById('modal');
+    const modalGame = document.getElementById('modalGame');
+    const gameInput = document.getElementById('gameInput');
+    const openTopUp = document.getElementById('openTopUp');
+    const openTopUp2 = document.getElementById('openTopUp2');
+    const closeModal = document.getElementById('closeModal');
+    const nominals = document.getElementById('nominals');
+    const confirmBtn = document.getElementById('confirmBtn');
+    const userIdInput = document.getElementById('userId');
+    const successMsg = document.getElementById('successMsg');
+    const year = document.getElementById('year');
+
+    year.textContent = new Date().getFullYear();
+
+    // Render game cards
+    function renderGames(){
+      gameGrid.innerHTML = '';
+      games.forEach(g => {
+        const el = document.createElement('div');
+        el.className = 'game';
+        el.innerHTML = `
+          <div class="game-top">
+            <div class="game-logo" style="background:linear-gradient(135deg,rgba(255,255,255,0.03), rgba(255,255,255,0.01)), ${g.color};color:#000">
+              ${g.name.split(' ').map(w=>w[0]).join('').slice(0,2)}
+            </div>
+            <div>
+              <h3>${g.name}</h3>
+              <p class="muted">${g.desc}</p>
+            </div>
+          </div>
+          <div class="game-actions">
+            <button class="small" data-id="${g.id}" data-name="${g.name}" onclick="openTopUpFor(event)">Top Up Sekarang</button>
+            <button class="small" onclick="alert('Info: Halaman detail ${g.name} belum tersedia')">Detail</button>
+          </div>
+        `;
+        gameGrid.appendChild(el);
+      });
+    }
+
+    function openTopUpFor(e){
+      const btn = e.currentTarget;
+      const name = btn.getAttribute('data-name');
+      const id = btn.getAttribute('data-id');
+      modalGame.textContent = name;
+      gameInput.value = name;
+      userIdInput.value = '';
+      successMsg.style.display = 'none';
+      modal.style.display = 'flex';
+      modal.setAttribute('aria-hidden','false');
+      // reset nominals selection
+      document.querySelectorAll('.nominal').forEach(n=>n.classList.remove('active'));
+      document.querySelectorAll('.nominal')[0].classList.add('active');
+    }
+
+    // open modal from header CTA
+    openTopUp.addEventListener('click', (e)=>{
+      e.preventDefault();
+      modalGame.textContent = 'Pilih Game';
+      gameInput.value = '';
+      modal.style.display = 'flex';
+      modal.setAttribute('aria-hidden','false');
+      document.querySelectorAll('.nominal').forEach(n=>n.classList.remove('active'));
+      document.querySelectorAll('.nominal')[0].classList.add('active');
+    });
+    openTopUp2.addEventListener('click', ()=>openTopUp.click());
+
+    closeModal.addEventListener('click', ()=>{
+      modal.style.display = 'none';
+      modal.setAttribute('aria-hidden','true');
+    });
+
+    // Nominal click
+    nominals.addEventListener('click', (evt)=>{
+      const target = evt.target.closest('.nominal');
+      if(!target) return;
+      document.querySelectorAll('.nominal').forEach(n=>n.classList.remove('active'));
+      target.classList.add('active');
+    });
+
+    // Confirm (simulate payment)
+    confirmBtn.addEventListener('click', (e)=>{
+      e.preventDefault();
+      const userId = userIdInput.value.trim();
+      const gameName = gameInput.value || '—';
+      const nominalEl = document.querySelector('.nominal.active');
+      if(!nominalEl){
+        alert('Pilih nominal terlebih dahulu.');
+        return;
+      }
+      if(!userId){
+        alert('Masukkan ID/UID gamemu terlebih dahulu.');
+        userIdInput.focus();
+        return;
+      }
+      const amount = nominalEl.getAttribute('data-value');
+      const method = document.querySelector('input[name="method"]:checked').value;
+      // simulate success
+      successMsg.style.display = 'block';
+      successMsg.innerHTML = `<div class="success">Berhasil! Top up <strong>${gameName}</strong> untuk ID <strong>${userId}</strong> sebesar <strong>Rp ${Number(amount).toLocaleString('id')}</strong> melalui <strong>${method.toUpperCase()}</strong>. Diamond/Credit akan masuk dalam beberapa detik.</div>`;
+      // after success, optionally close modal after delay (not auto-close to let user copy)
+      // reset fields
+      // userIdInput.value = '';
+    });
+
+    // Minimal promo carousel
+    let slideIndex = 0;
+    const slides = document.getElementById('slides');
+    const totalSlides = slides.children.length;
+    function showSlides(idx){
+      const w = slides.children[0].getBoundingClientRect().width + 12; // item width + gap
+      slides.style.transform = `translateX(${-(w*idx)}px)`;
+    }
+    document.getElementById('prevSlide').addEventListener('click', ()=>{
+      slideIndex = Math.max(0, slideIndex-1);
+      showSlides(slideIndex);
+    });
+    document.getElementById('nextSlide').addEventListener('click', ()=>{
+      slideIndex = Math.min(totalSlides-1, slideIndex+1);
+      showSlides(slideIndex);
+    });
+
+    // Initialize UI
+    renderGames();
+
+    // Accessibility: close modal on Esc
+    document.addEventListener('keydown', (e)=>{
+      if(e.key === 'Escape'){
+        modal.style.display = 'none';
+        modal.setAttribute('aria-hidden','true');
+      }
+    });
+
+    // click outside modal to close
+    document.getElementById('modal').addEventListener('click', (e)=>{
+      if(e.target === modal){
+        modal.style.display = 'none';
+        modal.setAttribute('aria-hidden','true');
+      }
+    });
+  </script>
+</body>
+</html>
