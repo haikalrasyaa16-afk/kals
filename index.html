@@ -1,43 +1,205 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>haikal</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kalstore | Haikal Rasya Ramadhan</title>
+  <style>
+    /* ===== General Reset ===== */
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: radial-gradient(circle at top, #0a0f1c, #05080f);
+      color: #e6e9ef;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: fadeInBody 1.2s ease-in;
+    }
+
+    /* ===== Profile Container ===== */
+    .profile-container {
+      max-width: 900px;
+      margin: 40px;
+      padding: 40px;
+      background: linear-gradient(145deg, #0c1324, #10182f);
+      border-radius: 20px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.8);
+      text-align: center;
+      animation: fadeInUp 1.2s ease-out;
+    }
+
+    /* ===== Header ===== */
+    header h1 {
+      font-size: 3rem;
+      color: #00bcd4;
+      margin-bottom: 5px;
+      letter-spacing: 1px;
+      text-shadow: 0 0 15px rgba(0,188,212,0.8);
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+      color: #a6b1e1;
+      opacity: 0.9;
+      letter-spacing: 0.5px;
+    }
+
+    /* ===== Sections ===== */
+    section {
+      margin-top: 40px;
+      text-align: left;
+    }
+
+    section h2, section h3 {
+      color: #8a2be2;
+      margin-bottom: 15px;
+      border-bottom: 2px solid #8a2be2;
+      display: inline-block;
+      padding-bottom: 3px;
+      text-shadow: 0 0 10px rgba(138,43,226,0.8);
+    }
+
+    .introduction p {
+      line-height: 1.7;
+      margin-bottom: 22px;
+      color: #d8dcf1;
+    }
+
+    /* ===== Button Group ===== */
+    .button-group {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+
+    /* ===== Buttons ===== */
+    .button-group a {
+      text-decoration: none;
+      padding: 14px 32px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 1rem;
+      text-align: center;
+      color: #fff;
+      border: 2px solid #00bcd4;
+      background: linear-gradient(145deg, #0c162a, #091122);
+      box-shadow: 0 4px 12px rgba(0,188,212,0.3);
+      position: relative;
+      transition: all 0.4s ease;
+      overflow: hidden;
+    }
+
+    .button-group a::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(0,188,212,0.4) 0%, rgba(0,188,212,0) 80%);
+      transform: scale(0);
+      transition: all 0.5s ease;
+      z-index: 0;
+      border-radius: 12px;
+    }
+
+    .button-group a:hover::before {
+      transform: scale(1);
+    }
+
+    .button-group a:hover {
+      color: #fff;
+      transform: translateY(-3px);
+      box-shadow: 0 0 25px #00bcd4, 0 0 50px #00bcd4, 0 0 75px #00bcd4;
+      background: linear-gradient(145deg, #112b3c, #0b1e30);
+    }
+
+    .button-group a span {
+      position: relative;
+      z-index: 2;
+    }
+
+    /* ===== Note Style ===== */
+    .note {
+      margin-top: 25px;
+      font-style: italic;
+      color: #a1accb;
+      text-align: center;
+    }
+
+    .note a {
+      color: #00bcd4;
+      text-decoration: none;
+    }
+
+    /* ===== Animation ===== */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInBody {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2.3rem;
+      }
+      .profile-container {
+        padding: 25px;
+      }
+      .button-group a {
+        padding: 12px 24px;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
 </head>
 <body>
 
-    <div class="profile-container">
-        <header>
-            <h1>Kalstore</h1>
-            <p class="subtitle">The Rookie Gamer & Active Community Member</p>
-        </header>
+  <div class="profile-container">
+    <header>
+      <h1>Kalstore</h1>
+      <p class="subtitle">The Rookie Gamer & Active Community Member</p>
+    </header>
 
-        <section class="introduction">
-            <h3>Selamat Datang di Kalstore</h3>
-    <p>
-      Halo! Saya <strong>Haikal Rasya Ramadhan</strong>, pendiri <strong>Kalstore</strong> — 
-      platform <strong>top up game online</strong> yang dijamin <em>amanah</em>, cepat, dan <em>terpercaya</em>.
-      Kami hadir untuk membantu para gamer melakukan top up berbagai game populer dengan harga bersahabat dan proses instan.
-    </p>
-    <p>
-      Keamanan transaksi Anda adalah prioritas kami. Dengan sistem pembayaran otomatis dan dukungan pelanggan profesional,
-      Kalstore memastikan setiap pembelian berjalan lancar tanpa kendala. 
-      Bergabunglah bersama ribuan gamer lain yang telah membuktikan pelayanan terbaik kami!
-    </p>
-		</section>
+    <section class="introduction">
+      <h3>Selamat Datang di Kalstore</h3>
+      <p>
+        Halo! Saya <strong>Haikal Rasya Ramadhan</strong>, pendiri <strong>Kalstore</strong> —
+        platform <strong>top up game online</strong> yang dijamin <em>amanah</em>, cepat, dan <em>terpercaya</em>.
+        Kami hadir untuk membantu para gamer melakukan top up berbagai game populer dengan harga bersahabat dan proses instan.
+      </p>
+      <p>
+        Keamanan transaksi Anda adalah prioritas kami. Dengan sistem pembayaran otomatis dan dukungan pelanggan profesional,
+        Kalstore memastikan setiap pembelian berjalan lancar tanpa kendala. 
+        Bergabunglah bersama ribuan gamer lain yang telah membuktikan pelayanan terbaik kami!
+      </p>
+    </section>
 
-        <section class="links">
-            <h2>Come N Here</h2>
-            <div class="button-group">
-                <a href="file:///C:\Program Files\Notepad++\web haikal\chatgpt.html" target="_blank"><span>chatgpt</span></a>
-                <a href="file:///C:\Program Files\Notepad++\web haikal\gemini.html" target="_blank"><span>gemini</span></a>
-                <a href="file:///C:\Program Files\Notepad++\web haikal\clude.html" target="_blank"><span>clude</span></a>
-            </div>
-            <p class="note">"See you tomorrow, <a>··· · ·   –·–– – ––– ··–   – ––– –– ––– ·–· ·–· ––– ·––"</a></p>
-        </section>
-    </div>
+    <section class="links">
+      <h2>Come N Here</h2>
+      <div class="button-group">
+        <a href="chatgpt.html" target="_blank"><span>ChatGPT</span></a>
+        <a href="gemini.html" target="_blank"><span>Gemini</span></a>
+        <a href="clude.html" target="_blank"><span>Clude</span></a>
+      </div>
+      <p class="note">"See you tomorrow, <a>··· · ·   –·–– – ––– ··–   – ––– –– ––– ·–· ·–· ––– ·––"</a></p>
+    </section>
+  </div>
 
 </body>
 </html>
